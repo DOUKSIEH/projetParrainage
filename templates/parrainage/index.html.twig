@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ParrainageController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Bonjour ! ✅</h1>
+
+    Vous avez envie de parrainer des petits gamins ??
+    Faites-vos courses
+    <br/><br/>
+    <div class="radio">
+            <label for="sexe">
+                <b> Sexe :</b>
+            </label>
+            <br/>
+            <input type="radio" id="boy" name="sexe" value="boy">
+            <label for="boy">Garçon</label>
+            &nbsp;&nbsp;
+            <input type="radio" id="girl" name="sexe" value="girl">
+            <label for="girl">Fille</label>
+            &nbsp;&nbsp;
+            <input type="radio" id="all" name="sexe" value="all">
+            <label for="all"> Pas de préférence</label>
+        </div>
+        <hr>
+        <div>
+            <label for="age">
+               <b> Tranche d'âge :</b>
+            </label>
+            <br/>
+            <input type="radio" id="baby" name="age" value="baby">
+            <label for="baby"> 3-7 ans</label>
+            &nbsp;&nbsp;
+            <input type="radio" id="young" name="age" value="young">
+            <label for="young"> 8-12 ans</label>
+            &nbsp;&nbsp;
+            <input type="radio" id="teen" name="age" value="teen">
+            <label for="teen"> 13-17 ans</label>
+            &nbsp;&nbsp;
+            <input type="radio" id="all" name="age" value="all">
+            <label for="all"> Pas de préférence</label>
+        </div>
+        <hr>
+
+        <div>
+            <label for="pays">
+                <b> Pays :</b>
+            </label>
+            <br/>
+            <select id="pays">
+
+
+                {% for paysfilleul in pays_filleuls %}
+                <option value="{{ paysfilleul.pays }}">{{ paysfilleul.pays }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <hr>
+
+{#    {{ form_start(form) }}#}
+
+{#    <div class="row">#}
+{#        <div class="col">#}
+{#            <div class="alert alert-light">#}
+
+{#                {{ form_row(form.age) }}#}
+{#                {{ form_row(form.genre) }}#}
+{#                {{ form_row(form.pays) }}#}
+
+
+
+{#                <button type="submit" class="btn btn-success">#}
+{#                    #}{# <i class="fas fa-check"></i> #}
+{#                    Confirmez l'inscription#}
+{#                </button>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    {{ form_end(form) }}#}
+
+
+</div>
+{% endblock %}
