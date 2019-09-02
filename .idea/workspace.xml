@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c6b6b4be-1abb-4b17-a5ef-51053b3e489b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/composer.phar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20190902082627.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20190902095028.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20190902095136.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Filleul.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Filleul.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Home/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="c6b6b4be-1abb-4b17-a5ef-51053b3e489b" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +172,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1567411887984</updated>
-      <workItem from="1567411889106" duration="5046000" />
+      <workItem from="1567411889106" duration="5287000" />
     </task>
     <servers />
   </component>
