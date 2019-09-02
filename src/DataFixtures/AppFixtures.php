@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-
+use App\Entity\Donneur;
 use Faker\Factory;
 //use App\Entity\Role;
 use App\Entity\User;
@@ -80,6 +80,25 @@ class AppFixtures extends Fixture
 
      
                 $manager->persist($filleul);
+
+            }
+
+            for ($i = 1; $i <= 30; $i++) 
+            {
+
+                $donneur = new Donneur();
+
+                //$user = $users[mt_rand(0, count($users) - 1)];
+
+                $donneur->setPrenom($faker->firstname($genre))
+                        ->setNom($faker->lastname)
+                        ->setAdresse($faker->address())
+                        ->setVille($faker->city())
+                        ->setTelephone($faker->randomNumber($nbDigits = NULL, $strict = false))
+                        ->setEmail($faker->email);
+
+     
+                $manager->persist($donneur);
 
             }
             
