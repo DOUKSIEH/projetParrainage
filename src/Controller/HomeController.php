@@ -13,13 +13,15 @@ class HomeController extends Controller {
     /**
      * @Route("/", name="home")
      */
-    public function home(){
-        // $event = $eventRepo->findLastest();
-        // $user = $userRepo->findLastest();
-        // dump( $userRepo->findLastest());
-       // die();
-        return $this->render(
-            'home/index.html.twig'
+    public function home(UserRepository $userRepo){
+       
+        //dd(substr(str_shuffle(str_repeat("0123456789azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN", 60)), 0,60));
+         $user = $userRepo->findLastest();
+         //dd($user);
+        return $this->render('home/index.html.twig',[
+            'users' => $user
+        ]
         );
     }
+   
 }
