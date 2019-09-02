@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DonneurController!{% endblock %}
+
+{% block body %}
+<div class="container">
+<p>Merci de renseigner les informations suivantes :</p>
+
+{{ include('donneur/_form.html.twig') }}
+
+<a href="{{ path('amount_donate_index')}}"></a>
+
+</div>
+
+{% endblock %}
