@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New AmountDonate{% endblock %}
+
+{% block body %}
+    <h1>Create new AmountDonate</h1>
+
+    {{ include('amount_donate/_form.html.twig') }}
+
+    <a href="{{ path('amount_donate_index') }}">back to list</a>
+{% endblock %}

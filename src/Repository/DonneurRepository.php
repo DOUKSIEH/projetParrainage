@@ -18,7 +18,22 @@ class DonneurRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Donneur::class);
     }
+    public function requestMail($email) {
+        
+        $em=$this->getEntityManager();
 
+        $query = $em->createQuery
+            (
+            'SELECT d 
+            FROM App\Entity\Donneur d
+            WHERE d.email = :mail'
+            )
+           ->setParameter('mail', $email);
+            
+
+      return $query->getResult();
+      
+    }
     // /**
     //  * @return Donneur[] Returns an array of Donneur objects
     //  */

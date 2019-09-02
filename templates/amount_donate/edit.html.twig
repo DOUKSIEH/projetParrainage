@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit AmountDonate{% endblock %}
+
+{% block body %}
+    <h1>Edit AmountDonate</h1>
+
+    {{ include('amount_donate/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('amount_donate_index') }}">back to list</a>
+
+    {{ include('amount_donate/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AmountDonate index{% endblock %}
+
+{% block body %}
+    <h1>AmountDonate index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Somme</th>
+                <th>DonnationDate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for amount_donate_controller in amount_donate %}
+            <tr>
+                <td>{{ amount_donate_controller.Somme }}</td>
+                <td>{{ amount_donate_controller.DonnationDate ? amount_donate_controller.DonnationDate|date('d-m-Y') : '' }}</td>
+                <td>
+                    <a href="{{ path('amount_donate_show', {'id': amount_donate_controller.id}) }}">show</a>
+                    <a href="{{ path('amount_donate_edit', {'id': amount_donate_controller.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('amount_donate_new') }}">Create new</a>
+{% endblock %}
