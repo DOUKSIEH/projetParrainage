@@ -44,7 +44,7 @@ class Filleul
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $ville;
+    private $pays;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -121,14 +121,14 @@ class Filleul
         return $this;
     }
 
-    public function getVille(): ?string
+    public function getPays(): ?string
     {
-        return $this->ville;
+        return $this->pays;
     }
 
-    public function setVille(string $ville): self
+    public function setPays(string $pays): self
     {
-        $this->ville = $ville;
+        $this->pays = $pays;
 
         return $this;
     }
