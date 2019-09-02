@@ -2,7 +2,7 @@
 
 On clone le dépot:
 
-git clone https://github.com/DOUKSIEH/projectParrainage.git
+git clone https://github.com/DOUKSIEH/projetParrainage.git
 
  On se déplace dans le dossier :
  
