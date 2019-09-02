@@ -7,6 +7,7 @@ use App\Entity\User;
 //use App\Entity\PasswordUpdate;
 use App\Form\RegistrationType;
 //use App\Form\PasswordUpdateType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
 //use App\Eventlistener\Registerlistener;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +22,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
-class AccountController extends Controller
+class AccountController extends AbstractController
 {
     /**
      * Permet d'afficher et de gérer le formulaire de connexion
