@@ -13,7 +13,9 @@ class HomeController extends Controller {
     /**
      * @Route("/", name="home")
      */
-    public function home(){
+    public function index()
+    {
+       // dd("coucu");
         // $event = $eventRepo->findLastest();
         // $user = $userRepo->findLastest();
         // dump( $userRepo->findLastest());
