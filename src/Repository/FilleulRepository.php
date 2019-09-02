@@ -47,4 +47,21 @@ class FilleulRepository extends ServiceEntityRepository
         ;
     }
     */
+
+     /**
+      * @return Filleul[] Returns an array of Filleul objects
+      */
+
+    public function findCountriesOfGodsons()
+    {
+        return $this->createQueryBuilder('f')
+            ->select('f.pays')
+            ->orderBy('f.pays', 'ASC')
+            ->distinct()
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
 }
