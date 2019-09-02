@@ -7,6 +7,7 @@
 
     <div class="container">
         <h2>Les ...! </h2>
+<<<<<<< HEAD
 
 {#        <div class="row">#}
 {#            {% for data in users %}#}
@@ -28,6 +29,29 @@
 {#            </div>#}
 {#            {% endfor %}#}
 {#        </div>#}
+=======
+{# 
+        <div class="row">
+            {% for data in users %}
+            <div class="col">
+                <div class="card border-secondary mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title">{{data.fullName}}</h4>
+
+                        <hr>
+
+                        <div class="card-text">
+                            <img src="{{data.picture}}" alt="Avatar de {{data.fullName}}" class="float-center mr-5">
+                            <br>
+                            <p>{{data.description | slice(0,30) | raw }}</p>
+                            <a href="{{ path('events_show', {'id': data.id,'slug':data.slug})}}" class="btn btn-success float-right">En savoir plus!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div> #}
+>>>>>>> f35493fba8e5483607868a1b165cb8a5cae5404d
 
 
 
