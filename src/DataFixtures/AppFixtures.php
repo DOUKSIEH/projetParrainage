@@ -74,7 +74,7 @@ class AppFixtures extends Fixture
                         ->setAge(mt_rand(3,18))
                         ->setGenre($faker->randomElement($genres))
                         ->setAdresse($faker->address())
-                        ->setVille($faker->city())
+                        ->setPays($faker->country())
                         ->setImage($image)
                         ->setParrain($user);
 
@@ -82,6 +82,7 @@ class AppFixtures extends Fixture
                 $manager->persist($filleul);
 
             }
+            
         
         $manager->flush();
     }
