@@ -44,11 +44,7 @@ class ParrainageController extends AbstractController
      */
     public function getFilleulRecherche(FilleulRepository $filleulRepository, Request $request) : Response
     {
-        $filleulsPays = $filleulRepository->findCountriesOfGodsons();
-
         if($request->isMethod('post')){
-
-           // $posts = $request->request->all();
 
             $pays = $request->request->get("pays");
             $age = $request->request->get("age");
@@ -62,8 +58,12 @@ class ParrainageController extends AbstractController
             }
             $randIndex = array_rand($filleulsTableau);
             $filleulAttribue = $filleulsTableau[$randIndex];
-
-
+            if ($filleulAttribue->getGenre()=="male") {
+                $filleulAttribue->setGenre("Homme");
+            }
+            else {
+                $filleulAttribue->setGenre("Femme");
+            }
         }
         return $this->render('parrainage/filleulAttribué.html.twig', [
             'filleul_attributed' => $filleulAttribue,
