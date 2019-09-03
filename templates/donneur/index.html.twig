@@ -4,37 +4,27 @@
 
 {% block body %}
 <div class="container">
-<h2>Etre Doneur</h2>
+<h2>Etre Donneur</h2>
 <section>
 <h3>Nos actions</h3>
 <p>Cras non magna hendrerit, elementum augue quis, vestibulum sapien. Ut nec risus ac nunc elementum cursus. Phasellus eu metus eget turpis consequat semper vitae vitae magna. Phasellus accumsan sem sed arcu fringilla, quis ornare dui pharetra. Etiam vitae dapibus nisi. Morbi facilisis blandit massa sit amet eleifend. Proin scelerisque pulvinar justo, ut commodo risus lobortis non. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi vitae nunc sodales, suscipit dolor ac, ultricies diam. Maecenas auctor tempor orci ut ultricies. Curabitur elit purus, congue quis ullamcorper et, feugiat sit amet nibh. In et pellentesque arcu, aliquam fermentum elit. </p>
+<div class='media'>
+<img class="align-self-end mr-3" src="https://via.placeholder.com/300x150"/>
+</div>
 <p>Nullam aliquam mi eu luctus condimentum. Donec consequat varius turpis, ultrices pulvinar purus semper sit amet. Etiam ullamcorper purus vitae luctus pellentesque. Suspendisse sit amet turpis hendrerit nulla vehicula maximus. Suspendisse tincidunt mauris sed aliquet fermentum. Vestibulum sit amet enim velit. Vestibulum et nisi a dolor condimentum malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean libero elit, dapibus eu risus auctor, porta imperdiet mauris. Quisque dapibus lectus vitae mi feugiat aliquet eu maximus augue. Donec ut ligula consequat, volutpat risus id, suscipit risus. Vivamus nunc urna, pulvinar in commodo et, vulputate sit amet arcu. Sed ut commodo urna. Duis egestas lacus ac rutrum cursus. Etiam pulvinar purus sed sem tincidunt volutpat. </p>
-<img src="https://via.placeholder.com/300x150"/>
+
 </section>
 <section>
 <h3>Comment faire un don</h3>
-<p>Les dons peuvent être mensuels ou annuels et du montant que vous souhaitez.</p>
-<p>Remplissez le formulaire en cliquant sur le bouton ci-dessous.</p>
+<p>Les dons peuvent être mensuels, annuels ou ponctuels et du montant que vous souhaitez.</p>
 
-<a class="btn btn-warning btn-lg" href="{{ path('amount_donate_index') }}">Faites un don</a>
 {{ form_start(formOneDonneur) }}
+<div class="form-group col-md-6">
     {{ form_widget(formOneDonneur) }}
+    </div>
     <button class="btn btn-secondary">{{ button_label|default('Continuer') }}</button>
 {{ form_end(formOneDonneur) }}
-{# <ul>
-{% for mail in eMail %}
-<li><strong> {{ mail.eMail }}</strong></li>
 
-{% endfor %}
-</ul>
-<ul>
-{% for mail in email %}
-<li><strong> {{ mail.email }}</strong></li>
-
-{% endfor %}
-</ul> #}
-{# {{ include('donneur/_form.html.twig') }}
-{{ include('amount_donate/_form.html.twig') }} #}
 </section>
 
 </div>

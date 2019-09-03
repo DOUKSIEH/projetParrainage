@@ -3,12 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\AmountDonate;
+use App\Entity\Donneur;
 use App\Form\AmountDonateType;
 use App\Repository\AmountDonateRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Form\RadioAmountType;
+
 
 /**
  * @Route("/amount/donate")
@@ -26,25 +29,35 @@ class AmountDonateController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="amount_donate_new", methods={"GET","POST"})
+     * @Route("/{id}/new", name="amount_donate_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Donneur $donneur): Response
     {
         $amountDonate = new AmountDonate();
         $form = $this->createForm(AmountDonateType::class, $amountDonate);
         $form->handleRequest($request);
-
+        // $formRadio = $this->createForm(RadioAmountType::class);
+        // $formRadio->handleRequest($request);
+       
         if ($form->isSubmitted() && $form->isValid()) {
+           
+            $amountDonate->setIdDonneur($donneur);
+            $amountDonate->setDonnationDate(new \DateTime());
+           
             $entityManager = $this->getDoctrine()->getManager();
+           
             $entityManager->persist($amountDonate);
             $entityManager->flush();
+            $this->addFlash('success', 'Paiement validé ! Vous avez un coeur en or !');
+            return $this->redirectToRoute('home');
 
-            return $this->redirectToRoute('amount_donate_index');
         }
 
         return $this->render('amount_donate/new.html.twig', [
             'amount_donate' => $amountDonate,
             'form' => $form->createView(),
+           
+           // 'email'=>$email
         ]);
     }
 
