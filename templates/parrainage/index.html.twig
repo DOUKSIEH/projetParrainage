@@ -3,87 +3,122 @@
 {% block title %}Hello ParrainageController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
 
-<div class="example-wrapper">
-    <h1>Bonjour ! ✅</h1>
 
-    Vous avez envie de parrainer des petits gamins ??
-    Faites-vos courses
-    <br/><br/>
-    <div class="radio">
+    <div class="example-wrapper text">
+        <h1 class="text-center">Bonjour ! ✅</h1>
+
+        <div class="text-center">
+            Vous avez envie de parrainer des petits gamins ??
+            Faites-vos courses
+        </div>
+
+
+        <br/><br/>
+            <div class="d-flex justify-content-center">
+
+        <form action="{{path('parrainage_filleul_attribué')}}" method="post">
+
+        <div class="radio">
             <label for="sexe">
                 <b> Sexe :</b>
             </label>
             <br/>
-            <input type="radio" id="boy" name="sexe" value="boy">
-            <label for="boy">Garçon</label>
-            &nbsp;&nbsp;
-            <input type="radio" id="girl" name="sexe" value="girl">
-            <label for="girl">Fille</label>
-            &nbsp;&nbsp;
-            <input type="radio" id="all" name="sexe" value="all">
-            <label for="all"> Pas de préférence</label>
-        </div>
-        <hr>
-        <div>
-            <label for="age">
-               <b> Tranche d'âge :</b>
-            </label>
-            <br/>
-            <input type="radio" id="baby" name="age" value="baby">
-            <label for="baby"> 3-7 ans</label>
-            &nbsp;&nbsp;
-            <input type="radio" id="young" name="age" value="young">
-            <label for="young"> 8-12 ans</label>
-            &nbsp;&nbsp;
-            <input type="radio" id="teen" name="age" value="teen">
-            <label for="teen"> 13-17 ans</label>
-            &nbsp;&nbsp;
-            <input type="radio" id="all" name="age" value="all">
-            <label for="all"> Pas de préférence</label>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="male" class="custom-control-input" name="sexe" value="male">
+                <label class="custom-control-label"  for="male">Garçon</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="female" class="custom-control-input" name="sexe" value="female">
+                <label class="custom-control-label"  for="female">Fille</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="all" class="custom-control-input" name="sexe" value="null">
+                <label class="custom-control-label"  for="all"> Pas de préférence</label>
+            </div>
         </div>
         <hr>
 
+        <div class="radio ">
+            <label for="age">
+                <b> Tranche d'âge :</b>
+            </label>
+            <br/>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="baby" class="custom-control-input" name="age" value="baby">
+                <label class="custom-control-label" for="baby"> 3-7 ans</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input type="radio" id="young" class="custom-control-input" name="age" value="young">
+                <label class="custom-control-label" for="young"> 8-12 ans</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input type="radio" id="teen" class="custom-control-input" name="age" value="teen">
+                <label class="custom-control-label" for="teen"> 13-17 ans</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input type="radio" id="all_ages" class="custom-control-input" name="age" value="null">
+                <label class="custom-control-label" for="all_ages"> Pas de préférence</label>
+            </div>
+        </div>
+        <hr>
         <div>
             <label for="pays">
                 <b> Pays :</b>
             </label>
             <br/>
-            <select id="pays">
 
+            <select id="pays" name="pays">
 
+                <option name="pays" value="null">Tous les pays</option>
                 {% for paysfilleul in pays_filleuls %}
-                <option value="{{ paysfilleul.pays }}">{{ paysfilleul.pays }}</option>
+                    <option id="pays" value="{{ paysfilleul.pays }}" name="pays">
+                        {{ paysfilleul.pays }}</option>
                 {% endfor %}
             </select>
         </div>
         <hr>
 
-{#    {{ form_start(form) }}#}
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            {% for message in app.flashes('warning') %}
 
-{#    <div class="row">#}
-{#        <div class="col">#}
-{#            <div class="alert alert-light">#}
+                {{ message }}
 
-{#                {{ form_row(form.age) }}#}
-{#                {{ form_row(form.genre) }}#}
-{#                {{ form_row(form.pays) }}#}
+            {% endfor %}
+        </form>
 
+            </div>
 
+        {#    {{ form_start(form) }}#}
 
-{#                <button type="submit" class="btn btn-success">#}
-{#                    #}{# <i class="fas fa-check"></i> #}
-{#                    Confirmez l'inscription#}
-{#                </button>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{#    {{ form_end(form) }}#}
+        {#    <div class="row">#}
+        {#        <div class="col">#}
+        {#            <div class="alert alert-light">#}
+
+        {#                {{ form_row(form.age) }}#}
+        {#                {{ form_row(form.genre) }}#}
+        {#                {{ form_row(form.pays) }}#}
 
 
-</div>
+
+        {#                <button type="submit" class="btn btn-success">#}
+        {#                    #}{# <i class="fas fa-check"></i> #}
+        {#                    Confirmez l'inscription#}
+        {#                </button>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#    </div>#}
+        {#    {{ form_end(form) }}#}
+
+
+    </div>
 {% endblock %}

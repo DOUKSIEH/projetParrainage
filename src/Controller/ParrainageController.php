@@ -21,27 +21,10 @@ class ParrainageController extends AbstractController
 
         $filleulsPays = $filleulRepository->findCountriesOfGodsons();
 
-        $form = $this->createForm(ParrainageType::class);
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()) {
-
-//            $manager->persist($user);
-//            $manager->flush();
-
-            $this->addFlash(
-                'success',
-                "Votre choix a bien été pris en compte !"
-            );
-            return $this->redirectToRoute('parrainage_filleuls');
-        }
-
-
         return $this->render('parrainage/index.html.twig', [
             'controller_name' => 'ParrainageController',
             'pays_filleuls' => $filleulsPays,
-            'form' => $form->createView()
+
         ]);
     }
 
@@ -52,6 +35,38 @@ class ParrainageController extends AbstractController
     {
         return $this->render('parrainage/liste.html.twig', [
             'liste_filleuls' => $filleulRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/parrainage/filleul_attribué", name="parrainage_filleul_attribué", methods={ "POST" })
+     *
+     */
+    public function getFilleulRecherche(FilleulRepository $filleulRepository, Request $request) : Response
+    {
+        $filleulsPays = $filleulRepository->findCountriesOfGodsons();
+
+        if($request->isMethod('post')){
+
+           // $posts = $request->request->all();
+
+            $pays = $request->request->get("pays");
+            $age = $request->request->get("age");
+            $sexe = $request->request->get("sexe");
+
+            $filleulsTableau = $filleulRepository->findRandomGodsons($age, $sexe, $pays);
+
+            if(empty($filleulsTableau)) {
+                $this->addFlash("warning" ,"Aucun enfant pour la requête effectuée");
+               return  $this->redirectToRoute('parrainage');
+            }
+            $randIndex = array_rand($filleulsTableau);
+            $filleulAttribue = $filleulsTableau[$randIndex];
+
+
+        }
+        return $this->render('parrainage/filleulAttribué.html.twig', [
+            'filleul_attributed' => $filleulAttribue,
         ]);
     }
 
