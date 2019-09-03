@@ -35,6 +35,9 @@ class AccountController extends AbstractController
     {
         $error = $utils->getLastAuthenticationError();
         $username = $utils->getLastUsername();
+        
+        dd($this->getUser());
+       // if($username) dump($username);
         return $this->render('account/login.html.twig', [
             'hasError' => $error !== null,
             'username' => $username
@@ -49,16 +52,17 @@ class AccountController extends AbstractController
      * 
      * @return Response
      */
-    public function register(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder) {
+    public function register(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder,AuthenticationUtils $auth) {
+
+      
 
         $user = new User();
 
         $form = $this->createForm(RegistrationType::class, $user);
         $form->handleRequest($request);
-        
-
+                           
         if($form->isSubmitted() && $form->isValid()) {
-
+          
              $hash = $encoder->encodePassword($user, $user->getPassword());
            
              $user->setPassword($hash);

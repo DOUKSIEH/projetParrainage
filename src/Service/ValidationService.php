@@ -9,9 +9,9 @@ class ValidationService extends AbstractController {
 
 
 
-    
 
-    protected  function str_random(){
+
+    public  function str_random(){
         $alphabet = "0123456789azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN";
         return substr(str_shuffle(str_repeat($alphabet, 50)), 0, 50);
     }

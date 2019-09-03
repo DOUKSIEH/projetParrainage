@@ -10,6 +10,11 @@
 
 <body>
     {{ include('header.html.twig') }} {% block body %}{% endblock %} {% block javascripts %} {% endblock %}
+     <div class="container" >
+            {% block footer %}
+                &copy; Copyright 2019 :  <a href="#">contactez nous :)</a>.
+            {% endblock %}
+        </div>
 </body>
 
 </html>
