@@ -18,17 +18,10 @@ class HomeController extends AbstractController {
      */
     public function home(UserRepository $userRepo ){
        
-        
+
         //dd(substr(str_shuffle(str_repeat("0123456789azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN", 60)), 0,60));
          $user = $userRepo->findLastest();
-         $values = [
-            10,
-            20,
-            '0',
-            '123hello',
-            'hello123'
-        ];
-        
+              
        // $expressionLanguage = new ExpressionLanguage();
        //$expressionLanguage->evaluate('"\\\\"')
         // dd( );
