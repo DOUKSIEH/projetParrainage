@@ -4,11 +4,14 @@
 
 {% block body %}
 <div class='container'>
+<div class="pt-4">
     <h2>Merci de nous aider financièrement</h2>
 
     {{ include('amount_donate/_form.html.twig') }}
 
-  
-    <a href="{{ path('amount_donate_index') }}">back to list</a>
+  {% for amount_donate_controller in amount_donate %}
+    <a  class="btn btn-outline-secondary" href="{{ path('amount_donate_show', {'id': amount_donate_controller.id}) }}">back to list</a>
+    {% endfor %}
+    </div>
     </div>
 {% endblock %}

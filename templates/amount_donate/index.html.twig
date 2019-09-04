@@ -9,6 +9,7 @@
     <table class="table">
         <thead>
             <tr>
+            <th></th>
                 <th>Somme</th>
                 <th>Date du don</th>
                 <th>Fréquence</th>
@@ -18,6 +19,7 @@
         <tbody>
         {% for amount_donate_controller in amount_donate %}
             <tr>
+            <td>{{ amount_donate_controller.idDonneur.nom }}</td>
                 <td>{{ amount_donate_controller.Somme }}</td>
                 <td>{{ amount_donate_controller.DonnationDate ? amount_donate_controller.DonnationDate|date('d-m-Y') : '' }}</td>
                 <td>{{ amount_donate_controller.Frequency}}</td>

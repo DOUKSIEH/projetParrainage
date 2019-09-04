@@ -4,17 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-LS4/wo5Z/8SLpOLHs0IbuPAGOWTx30XSoZJ8o7WKH0UJhRpjXXTpODOjfVnNjeHu" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css"
+        integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
 
 </head>
 
 <body>
     {{ include('header.html.twig') }} {% block body %}{% endblock %} {% block javascripts %} {% endblock %}
-     <div class="container" >
+     
             {% block footer %}
-                &copy; Copyright 2019 :  <a href="#">contactez nous :)</a>.
+            <div class='text-right m-4'>
+               <p class="pr-4 text-muted"> &copy; Copyright 2019 :  <a href="#">contactez nous :)</a>.</p>
+                <p class="pr-4 text-muted">Made with <i class="fas fa-heart text-primary"></i> by Douksieh, Edouard et Olivia
+                </div>
             {% endblock %}
-        </div>
+       
 </body>
 
 </html>

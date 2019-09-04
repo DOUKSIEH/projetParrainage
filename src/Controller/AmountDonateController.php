@@ -48,7 +48,7 @@ class AmountDonateController extends AbstractController
            
             $entityManager->persist($amountDonate);
             $entityManager->flush();
-            $this->addFlash('success', 'Paiement validé ! Vous avez un coeur en or !');
+            $this->addFlash('success', 'Paiement validé ! Vous avez un coeur en or ! Merci');
             return $this->redirectToRoute('home');
 
         }
