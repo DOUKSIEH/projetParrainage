@@ -16,16 +16,18 @@
 </section>
 <section class="p-2">
 <h3 class="text-primary">Comment faire un don</h3>
-<p>Les dons peuvent être mensuels, annuels ou ponctuels et du montant que vous souhaitez.</p>
+<p>Les dons peuvent être <span class="text-warning">mensuels</span>, <span class="text-warning">annuels</span> ou <span class="text-warning">ponctuels</span> et du montant que vous souhaitez.</p>
 <p>Il vous suffit de renseigner vos coordonnées et de nous indiquer le montant du don, vous n'avez pas besoin d'être connecté.</p>
-{{ form_start(formOneDonneur) }}
+{#{ form_start(formOneDonneur) }#}
+<form method="GET" id="validateMail" action="{{ path('display_json_user_form') }}">
 <div class="form-group col-md-6">
     {{ form_widget(formOneDonneur) }}
     </div>
-    <button class="btn btn-secondary">{{ button_label|default('Continuer') }}</button>
+    <button class="btn btn-secondary continue">{{ button_label|default('Continuer') }}</button>
 {{ form_end(formOneDonneur) }}
 
 </section>
-
+<section class="montant">
+</section>
 </div>
 {% endblock %}
