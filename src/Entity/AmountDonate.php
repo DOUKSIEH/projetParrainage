@@ -22,7 +22,7 @@ class AmountDonate
     private $Somme;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $DonnationDate;
 
@@ -31,6 +31,11 @@ class AmountDonate
      * @ORM\JoinColumn(nullable=false)
      */
     private $IdDonneur;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $frequency;
 
     public function getId(): ?int
     {
@@ -69,6 +74,18 @@ class AmountDonate
     public function setIdDonneur(?Donneur $IdDonneur): self
     {
         $this->IdDonneur = $IdDonneur;
+
+        return $this;
+    }
+
+    public function getFrequency(): ?string
+    {
+        return $this->frequency;
+    }
+
+    public function setFrequency(string $frequency): self
+    {
+        $this->frequency = $frequency;
 
         return $this;
     }
