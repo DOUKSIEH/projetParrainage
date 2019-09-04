@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Filleul;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\QueryBuilder;
 
 /**
@@ -106,5 +107,20 @@ class FilleulRepository extends ServiceEntityRepository
 
     }
 
+    /**
+     * @param $value
+     * @return Filleul|null
+     */
+    public function findOneFilleulById($value): ?Filleul
+    {
+        try {
+            return $this->createQueryBuilder('f')
+                ->andWhere('f.id = :val')
+                ->setParameter('val', $value)
+                ->getQuery()
+                ->getOneOrNullResult();
+        } catch (NonUniqueResultException $e) {
+        }
+    }
 
 }

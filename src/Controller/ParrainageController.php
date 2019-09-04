@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Filleul;
+use App\Entity\User;
 use App\Form\PaiementparrainType;
 use App\Form\ParrainageType;
 use App\Repository\FilleulRepository;
@@ -11,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use function mysql_xdevapi\getSession;
 
 class ParrainageController extends AbstractController
 {
@@ -72,32 +74,69 @@ class ParrainageController extends AbstractController
     }
 
     /**
-     * Permet d'afficher le formulaire d'inscription
+     * Permet d'effectuer le paiement mensuel
      *
-     * @Route("/parrainage/paiementfilleul", name="paiement_filleul")
+     * @Route("/parrainage/paiement_mensuel_filleul", name="paiement_mensuel_filleul", methods={ "POST" })
      *
      * @return Response
      */
-    public function register(Request $request, ObjectManager $manager) {
+    public function paiementMensuel(Request $request, ObjectManager $manager, FilleulRepository $filleulRepository) {
 
-        $form = $this->createForm(PaiementparrainType::class);
-//        $form->handleRequest($request);
-//        if($form->isSubmitted() && $form->isValid()) {
-//
-//            $hash = $encoder->encodePassword($user, $user->getPassword());
-//
-//            $user->setPassword($hash);
-//            $manager->persist($user);
-//            $manager->flush();
-//
-//            $this->addFlash(
-//                'success',
-//                "Votre compte a bien été créé ! Vous pouvez maintenant vous connecter !"
-//            );
-//            return $this->redirectToRoute('account_login');
-//        }
+
+        if($request->isMethod('post')) {
+
+            $idFilleul = $request->request->get("idFilleul");
+            $filleul = $filleulRepository->findOneFilleulById($idFilleul);
+
+            $user = $this->getUser();
+            $filleul->setParrain($user);
+            $manager->persist($filleul);
+            $manager->flush();
+
+
+
+            //TODO ajouter à parrain valeure mensuelle : M de paiement
+            // lier filleul à parrain
+            // de fait, récupérer idUser
+
+           // dd($filleul);
+        }
+
+
         return $this->render('parrainage/tabDeParrainage.html.twig', [
-            'form' => $form->createView()
+            'filleul' => $filleul
+        ]);
+    }
+
+    /**
+     * Permet d'effectuer le paiement annuel
+     *
+     * @Route("/parrainage/paiement_annuel_filleul", name="paiement_annuel_filleul", methods={ "POST" })
+     *
+     * @return Response
+     */
+    public function paiementAnnuel(Request $request, ObjectManager $manager, FilleulRepository $filleulRepository) {
+
+
+        if($request->isMethod('post')) {
+
+            $idFilleul = $request->request->get("idFilleul");
+            $filleul = $filleulRepository->findOneFilleulById($idFilleul);
+
+            $user = $this->getUser();
+            $filleul->setParrain($user);
+            $manager->persist($filleul);
+            $manager->flush();
+
+            //TODO ajouter à parrain valeure annuelle : A de paiement
+            // lier filleul à parrain
+            // de fait, récupérer idUser
+
+            // dd($filleul);
+        }
+
+        return $this->render('parrainage/tabDeParrainage.html.twig', [
+            'filleul' => $filleul
         ]);
     }
 

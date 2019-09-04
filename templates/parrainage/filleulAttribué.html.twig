@@ -38,15 +38,24 @@
     </div>
 
     <hr>
+
     <div class="text-center">
         <h3 class="text-center">Comment souhaitez-vous financer les études de l'élève ? </h3>
         <br/>
 
+    <form action="{{path('paiement_mensuel_filleul')}}" method="post">
+        <input type="text" value="{{ filleul.id }}" name="idFilleul" hidden />
         <legend>45€/mois sans engagement</legend>
-        <button type="button" class="btn btn-secondary">Mensuellement</button>
+        <button type="submit" class="btn btn-secondary">Mensuellement</button>
+    </form>
+
 <br/><br/>
+
+        <form action="{{path('paiement_annuel_filleul')}}" method="post">
+            <input type="text" value="{{ filleul.id }}" name="idFilleul" hidden />
         <legend>500 euros pour l'année</legend>
-        <button type="button" class="btn btn-info">Annuellement</button>
+        <button type="submit" class="btn btn-info">Annuellement</button>
+        </form>
     </div>
 
 </div>
