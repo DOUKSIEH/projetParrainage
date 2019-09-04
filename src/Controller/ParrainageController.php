@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Filleul;
+use App\Form\PaiementparrainType;
 use App\Form\ParrainageType;
 use App\Repository\FilleulRepository;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -70,6 +71,35 @@ class ParrainageController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet d'afficher le formulaire d'inscription
+     *
+     * @Route("/parrainage/paiementfilleul", name="paiement_filleul")
+     *
+     * @return Response
+     */
+    public function register(Request $request, ObjectManager $manager) {
+
+        $form = $this->createForm(PaiementparrainType::class);
+//        $form->handleRequest($request);
+//        if($form->isSubmitted() && $form->isValid()) {
+//
+//            $hash = $encoder->encodePassword($user, $user->getPassword());
+//
+//            $user->setPassword($hash);
+//            $manager->persist($user);
+//            $manager->flush();
+//
+//            $this->addFlash(
+//                'success',
+//                "Votre compte a bien été créé ! Vous pouvez maintenant vous connecter !"
+//            );
+//            return $this->redirectToRoute('account_login');
+//        }
+        return $this->render('parrainage/tabDeParrainage.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 
 
 }

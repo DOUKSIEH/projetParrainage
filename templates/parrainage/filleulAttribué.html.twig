@@ -30,16 +30,23 @@
                 <li class="list-group-item ">{{ filleul.adresse }}</li>
                 <li class="list-group-item text-center">{{ asset(filleul.image) | figure(filleul.pays) | raw }}</li>
             </ul>
+            <br/>
+            <p class="text-center">
+                {{ filleul.prenom }} a besoin de <b>500 euros</b> pour ses études
+            </p>
         </div>
     </div>
-    <br/>
+
     <hr>
     <div class="text-center">
         <h3 class="text-center">Comment souhaitez-vous financer les études de l'élève ? </h3>
         <br/>
-        <button type="button" class="btn btn-primary">Mensuellement</button>
-        &nbsp; &nbsp; &nbsp;
-        <button type="button" class="btn btn-primary">Annuellement</button>
+
+        <legend>45€/mois sans engagement</legend>
+        <button type="button" class="btn btn-secondary">Mensuellement</button>
+<br/><br/>
+        <legend>500 euros pour l'année</legend>
+        <button type="button" class="btn btn-info">Annuellement</button>
     </div>
 
 </div>
