@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Filleul;
+use App\Form\PaiementparrainType;
 use App\Form\ParrainageType;
 use App\Repository\FilleulRepository;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -21,27 +22,10 @@ class ParrainageController extends AbstractController
 
         $filleulsPays = $filleulRepository->findCountriesOfGodsons();
 
-        $form = $this->createForm(ParrainageType::class);
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()) {
-
-//            $manager->persist($user);
-//            $manager->flush();
-
-            $this->addFlash(
-                'success',
-                "Votre choix a bien été pris en compte !"
-            );
-            return $this->redirectToRoute('parrainage_filleuls');
-        }
-
-
         return $this->render('parrainage/index.html.twig', [
             'controller_name' => 'ParrainageController',
             'pays_filleuls' => $filleulsPays,
-            'form' => $form->createView()
+
         ]);
     }
 
@@ -55,6 +39,67 @@ class ParrainageController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/parrainage/filleul_attribué", name="parrainage_filleul_attribué", methods={ "POST" })
+     *
+     */
+    public function getFilleulRecherche(FilleulRepository $filleulRepository, Request $request) : Response
+    {
+        if($request->isMethod('post')){
+
+            $pays = $request->request->get("pays");
+            $age = $request->request->get("age");
+            $sexe = $request->request->get("sexe");
+
+            $filleulsTableau = $filleulRepository->findRandomGodsons($age, $sexe, $pays);
+
+            if(empty($filleulsTableau)) {
+                $this->addFlash("warning" ,"Aucun enfant pour la requête effectuée");
+               return  $this->redirectToRoute('parrainage');
+            }
+            $randIndex = array_rand($filleulsTableau);
+            $filleulAttribue = $filleulsTableau[$randIndex];
+            if ($filleulAttribue->getGenre()=="male") {
+                $filleulAttribue->setGenre("Homme");
+            }
+            else {
+                $filleulAttribue->setGenre("Femme");
+            }
+        }
+        return $this->render('parrainage/filleulAttribué.html.twig', [
+            'filleul_attributed' => $filleulAttribue,
+        ]);
+    }
+
+    /**
+     * Permet d'afficher le formulaire d'inscription
+     *
+     * @Route("/parrainage/paiementfilleul", name="paiement_filleul")
+     *
+     * @return Response
+     */
+    public function register(Request $request, ObjectManager $manager) {
+
+        $form = $this->createForm(PaiementparrainType::class);
+//        $form->handleRequest($request);
+//        if($form->isSubmitted() && $form->isValid()) {
+//
+//            $hash = $encoder->encodePassword($user, $user->getPassword());
+//
+//            $user->setPassword($hash);
+//            $manager->persist($user);
+//            $manager->flush();
+//
+//            $this->addFlash(
+//                'success',
+//                "Votre compte a bien été créé ! Vous pouvez maintenant vous connecter !"
+//            );
+//            return $this->redirectToRoute('account_login');
+//        }
+        return $this->render('parrainage/tabDeParrainage.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 
 
 }

@@ -33,18 +33,18 @@ class ParrainageType extends ApplicationType
                       'Peu importe' => 'whatever',
               ]
           ])
-//            ->add('pays', EntityType::class, [
-//                'class' => Filleul::class,
-//
-//                'query_builder' => function (EntityRepository $fr) {
-//                    return $fr->createQueryBuilder('f')
-//                        ->select('f.pays')
-//                        ->orderBy('f.pays', 'ASC')
-//                        ->distinct()
-//                        ;
-//                },
-//                'choice_label' => 'pays',
-//            ])
+            ->add('pays', EntityType::class, [
+                'class' => Filleul::class,
+
+                'query_builder' => function (EntityRepository $fr) {
+                    return $fr->createQueryBuilder('f')
+                        ->select('f.pays')
+                        ->orderBy('f.pays', 'ASC')
+                        ->distinct()
+                        ;
+                },
+                'choice_label' => 'pays',
+            ])
         ;
     }
 
