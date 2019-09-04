@@ -11,7 +11,8 @@
                 {% if hasError %}
                 <div class="alert alert-danger">L'oubli fait partie du bon fonctionnement de la mémoire, veuillez résaisir
                 </div>
-                {% endif %} {% for message in app.flashes('success') %}
+                {% endif %} 
+                {% for message in app.flashes('success') %}
                 <div class="alert alert-success">
                     {{ message }}
                 </div>

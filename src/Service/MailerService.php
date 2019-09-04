@@ -9,6 +9,7 @@ class MailerService extends AbstractController
      * @var \Swift_Mailer
      */
     private $mailer;
+
     public function __construct(\Swift_Mailer $mailer)
     {
         $this->mailer = $mailer;
@@ -19,22 +20,17 @@ class MailerService extends AbstractController
      * @param $template
      * @param $to
      */
-    public function sendToken($token, $to, $username, $template)
+    public function sendMail($from,$token, $email, $username)
     {
         $message = (new \Swift_Message('Mail de confirmation'))
-            ->setFrom('ismanhassan18@gmail.com')
-            ->setTo($to)
-            ->setBody(
-                $this->renderView(
-                    'emails/'.$template,
-                    [
-                        'token' => $token,
-                        'username' => $username
-                    ]
-                ),
+                  ->setFrom($from)
+                  ->setTo($email)
+                 ->setBody('<a href=http://127.0.0.1:8000/confirmation/'.$username.'/'.$token.'>Afin de valider votre compte merci de cliquer sur ce lien\n\n http://127.0.0.1:8000/confirmation/'.$username.'/'.$token.'</a>',
                 'text/html'
-            )
+                    )
         ;
-        $this->mailer->send($message);
+       // dd($message);
+     $this->mailer->send($message);
     }
 }
+
