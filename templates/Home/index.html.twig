@@ -1,33 +1,39 @@
 {% extends 'base.html.twig' %} {% block title %}Bienvenue!{% endblock %} {% block body %}
 
-<div class="jumbotron text-center">
+<div class="jumbotron text-center m-5">
     <h1>Bienvenue...!✅</h1>
 
     <p>Conveniently scale future-proof applications before bricks-and-clicks ROI. Progressively re-engineer cost effective opportunities vis-a-vis value-added.</p>
 
-    <div class="container">
-        <h2>Les ...! </h2>
+    <div class="container ">
 
-{#        <div class="row">#}
-{#            {% for data in users %}#}
-{#            <div class="col">#}
-{#                <div class="card border-secondary mb-3">#}
-{#                    <div class="card-body">#}
-{#                        <h4 class="card-title">{{data.fullName}}</h4>#}
+        <h2>Parrain et Marraine...! </h2>
 
-{#                        <hr>#}
 
-{#                        <div class="card-text">#}
-{#                            <img src="{{data.picture}}" alt="Avatar de {{data.fullName}}" class="float-center mr-5">#}
-{#                            <br>#}
-{#                            <p>{{data.description | slice(0,30) | raw }}</p>#}
-{#                            <a href="{{ path('events_show', {'id': data.id,'slug':data.slug})}}" class="btn btn-success float-right">En savoir plus!</a>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#            {% endfor %}#}
-{#        </div>#}
+        <div class="row">
+            {% for data in users %}
+            <div class="col-3">
+                <div class="card border-secondary mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title">{{data.fullName}}</h4>
+
+                        <hr>
+
+                        <div class="card-text">
+                            <img src="{{data.image}}" alt="Avatar de {{data.fullName}}" class="float-center mr-5">
+                            <br>
+                            <p>{{data.Nom }} suit la vie scolaire de </p>
+                            <a href="#" class="btn btn-success float-right">En savoir plus!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div> 
+
+
+
+>>>>>>> 2b2e3689de0d644c62e2cb7659ece2d69d2d65fd
 
     </div>
 

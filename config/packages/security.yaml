@@ -13,6 +13,19 @@ security:
         main:
             anonymous: true
 
+            provider: from_data
+
+            logout:
+                path: account_logout
+                target: account_login
+                
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+            form_login: 
+                login_path: account_login
+                check_path: account_login
+
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 
@@ -26,5 +39,5 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
     encoders:
         App\Entity\User:
-            algorithm: bcrypt
+            algorithm: auto
             cost: 12
