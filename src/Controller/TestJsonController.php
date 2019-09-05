@@ -68,6 +68,7 @@ class TestJsonController extends AbstractController
     public function new(Request $request): Response
     {
         $donneur = new Donneur();
+        
         $form = $this->createForm(DonneurType::class, $donneur);
         $form->handleRequest($request);
 
@@ -91,13 +92,16 @@ class TestJsonController extends AbstractController
      */
     public function userProfile(Request $request, DonneurRepository $repo): Response
     {
-        // var_dump($request->query->get('email')); die;
+        
 
         /* TODO : Teser si le mailexiste dQNS L BASE */
 
         $donneur = new Donneur();
-
-        $donneur->setEmail($request->query->get('email'));
+        // dd($donneur);die;
+        // $email = $donneur->getEmail();
+        // dd($email);die;
+        // $donneur->setEmail($email);
+        // //$request->query->get('email')
         $form = $this->createForm(DonneurType::class, $donneur);
         $form->handleRequest($request);
 
@@ -105,7 +109,7 @@ class TestJsonController extends AbstractController
             'formDonneur' => $form->createView(),
         ]);
 
-        var_dump($html->getContent());
+       // var_dump($html->getContent());
 
         return new JsonResponse(['form' => $html->getContent()]);
     }

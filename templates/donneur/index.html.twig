@@ -18,8 +18,8 @@
 <h3 class="text-primary">Comment faire un don</h3>
 <p>Les dons peuvent être <span class="text-warning">mensuels</span>, <span class="text-warning">annuels</span> ou <span class="text-warning">ponctuels</span> et du montant que vous souhaitez.</p>
 <p>Il vous suffit de renseigner vos coordonnées et de nous indiquer le montant du don, vous n'avez pas besoin d'être connecté.</p>
-{#{ form_start(formOneDonneur) }#}
-<form method="GET" id="validateMail" action="{{ path('display_json_user_form') }}">
+{{ form_start(formOneDonneur) }}
+{# <form method="GET" id="validateMail" action="{{ path('donneur_index') }}"> #}
 <div class="form-group col-md-6">
     {{ form_widget(formOneDonneur) }}
     </div>
