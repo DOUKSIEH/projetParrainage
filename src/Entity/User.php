@@ -222,10 +222,11 @@ class User implements UserInterface
         return $this->email;
     }
     public function eraseCredentials(){}
+        
     public function getRoles()
     {
         $roles = $this->userRoles->map(function ($role) {
-            return $role->getTitle();
+            return $role->getTitre();
         })->toArray();
         $roles[] = 'ROLE_USER';
         return $roles;

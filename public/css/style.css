@@ -5,4 +5,15 @@
 .col-form-label {
   display: none;
 }
+
+.avatar {
+  max-width: 128px;
+  max-height: 128px;
+  border-radius: 50%;
+}
+
+.avatar.avatar-mini {
+  max-width: 24px;
+  max-height: 24px;
+}
 /*# sourceMappingURL=style.css.map */

@@ -12,14 +12,18 @@
 </head>
 
 <body>
-    {{ include('header.html.twig') }} {% block body %}{% endblock %} {% block javascripts %} {% endblock %}
+    {{ include('header.html.twig') }} {% block body %}{% endblock %} 
+    
      
-            {% block footer %}
+
+       {% block footer %}
             <div class='text-right m-4'>
                <p class="pr-4 text-muted"> &copy; Copyright 2019 :  <a href="#">contactez nous :)</a>.</p>
                 <p class="pr-4 text-muted">Made with <i class="fas fa-heart text-primary"></i> by Douksieh, Edouard et Olivia
                 </div>
             {% endblock %}
+
+            {% block javascripts %} {% endblock %}
        
 </body>
 

@@ -11,11 +11,14 @@
 
 
         <div class="row">
-            {% for data in users %}
-            <div class="col-3">
+           {# <div class="col-4">
+                                          
+        </div> #}
+            {% for data in paginations.data %}
+            <div class="col-4">
                 <div class="card border-secondary mb-3">
                     <div class="card-body">
-                        <h4 class="card-title">{{data.fullName}}</h4>
+                        <h4 class="card-title">{{data.prenom}}</h4>
 
                         <hr>
 
@@ -31,7 +34,7 @@
             {% endfor %}
         </div> 
 
-
+        {{ paginations.display() }}
 
 
     </div>

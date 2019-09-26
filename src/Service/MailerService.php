@@ -25,7 +25,7 @@ class MailerService extends AbstractController
         $message = (new \Swift_Message('Mail de confirmation'))
                   ->setFrom($from)
                   ->setTo($email)
-                 ->setBody('<a href=http://127.0.0.1:8000/confirmation/'.$username.'/'.$token.'>Afin de valider votre compte merci de cliquer sur ce lien\n\n http://127.0.0.1:8000/confirmation/'.$username.'/'.$token.'</a>',
+                 ->setBody('Afin de valider votre compte merci de cliquer sur ce lien\n\n <a href=http://127.0.0.1:8000/confirmation/'.$username.'/'.$token.'> http://127.0.0.1:8000/confirmation/'.$username.'/'.$token.'</a>',
                 'text/html'
                     )
         ;

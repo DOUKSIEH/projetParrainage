@@ -3,13 +3,14 @@
 namespace App\DataFixtures;
 
 use Faker\Factory;
-use App\Entity\User;
+use App\Entity\Role;
 //use App\Entity\Role;
+use App\Entity\User;
 use App\Entity\Donneur;
 use App\Entity\Filleul;
 use App\Service\ValidationService;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 //use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -28,6 +29,25 @@ class AppFixtures extends Fixture
     {
 
         $faker = Factory::create('fr_FR');
+
+        // ajouter un nouveau
+        $adminRole = new Role();
+        $adminRole->setTitre('ROLE_ADMIN');
+        $manager->persist($adminRole);
+
+        $adminUser = new User();     
+        $adminUser->setPrenom('Douksieh')
+                  ->setNom('Isman')
+                  ->setEmail('ismanhassan18@gmail.com')
+                  ->setPassword($this->encoder->encodePassword($adminUser, 'password'))
+                  ->setImage('https://randomuser.me/api/portraits/men/63.jpg')
+                  ->setAdresse($faker->address())
+                  ->setVille( $faker->city())
+                  ->setToken($this->token->str_random())
+                  ->setTelephone($faker->randomNumber($nbDigits = NULL, $strict = false))
+                  ->addUserRole($adminRole)
+                  ;
+        $manager->persist($adminUser);
        
         // Nous gérons les utilisateurs
         $users = [];
@@ -35,7 +55,7 @@ class AppFixtures extends Fixture
         $genres = ['male', 'female'];
         
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 50; $i++) {
 
             $user = new User();
 
@@ -66,7 +86,7 @@ class AppFixtures extends Fixture
 
         // Nous gérons les evenements
 
-            for ($i = 1; $i <= 30; $i++) 
+            for ($i = 1; $i <= 50; $i++) 
             {
 
                 $filleul = new Filleul();
@@ -97,7 +117,7 @@ class AppFixtures extends Fixture
 
             }
 
-            for ($i = 1; $i <= 30; $i++) 
+            for ($i = 1; $i <= 50; $i++) 
             {
 
                 $donneur = new Donneur();

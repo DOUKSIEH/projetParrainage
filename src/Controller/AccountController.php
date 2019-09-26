@@ -103,7 +103,8 @@ class AccountController extends AbstractController
         ]);
     }
    
-    
+    //     throw $this->createNotFoundException("No book with given isbn $isbn");
+       
     /**
      * Permet d'afficher le profil de l'utilisateur connecté
      *
@@ -136,9 +137,10 @@ class AccountController extends AbstractController
                 "Votre compte a bien été créé ! Vous pouvez maintenant vous connecter !"
             );
 
-           return $this->render('account/confirm.html.twig', [
-              'users' => $user
-           ]);
+        //    return $this->render('account/confirm.html.twig', [
+        //       'users' => $user
+        //    ]);
+           return $this->redirectToRoute('account_login');
         
        }
        else
