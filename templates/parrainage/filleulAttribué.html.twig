@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ParrainageController!{% endblock %}
+
+{% block body %}
+{#<style>#}
+{#    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }#}
+{#    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }#}
+{#</style>#}
+
+{% set filleul = filleul_attributed %}
+
+<div class="container">
+    {% if filleul.genre == "Homme" %}
+    <h1 class="text-center">Bravo, vous avez trouvé un filleul ! </h1>
+    {% else %}
+    <h1 class="text-center">Bravo, vous avez trouvé une filleule ! </h1>
+    {% endif %}
+
+    <br/>
+    <div class="d-flex justify-content-center">
+        <div>
+            <ul class="list-group">
+
+                <li class="list-group-item ">{{ filleul.prenom }}</li>
+                <li class="list-group-item ">{{ filleul.nom }}</li>
+                <li class="list-group-item ">{{ filleul.age }} ans</li>
+                <li class="list-group-item ">{{ filleul.genre | capitalize}}</li>
+                <li class="list-group-item ">{{ filleul.pays }}</li>
+                <li class="list-group-item ">{{ filleul.adresse }}</li>
+                <li class="list-group-item text-center">{{ asset(filleul.image) | figure(filleul.pays) | raw }}</li>
+            </ul>
+            <br/>
+            <p class="text-center">
+                {{ filleul.prenom }} a besoin de <b>500 euros</b> pour ses études
+            </p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="text-center">
+        <h3 class="text-center">Comment souhaitez-vous financer les études de l'élève ? </h3>
+        <br/>
+
+    <form action="{{path('paiement_mensuel_filleul')}}" method="post">
+        <input type="text" value="{{ filleul.id }}" name="idFilleul" hidden />
+        <legend>45€/mois sans engagement</legend>
+        <button type="submit" class="btn btn-secondary">Mensuellement</button>
+    </form>
+
+<br/><br/>
+
+        <form action="{{path('paiement_annuel_filleul')}}" method="post">
+            <input type="text" value="{{ filleul.id }}" name="idFilleul" hidden />
+        <legend>500 euros pour l'année</legend>
+        <button type="submit" class="btn btn-info">Annuellement</button>
+        </form>
+    </div>
+
+</div>
+
+
+    {% endblock %}
+
+
+
