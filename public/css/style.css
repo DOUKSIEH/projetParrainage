@@ -1,6 +1,9 @@
 #heart {
   color: #f78686;
 }
+a .btn.btn-success {
+  color: #f78686;
+}
 
 .col-form-label {
   display: none;
@@ -16,4 +19,5 @@
   max-width: 24px;
   max-height: 24px;
 }
+
 /*# sourceMappingURL=style.css.map */
