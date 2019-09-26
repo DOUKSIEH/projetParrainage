@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css"
         integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
          {% endblock %}
-    {% block javascripts %}
+  
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src='/js/main.js'></script>
-    {% endblock %}
+    <script src='/js/main.js'></script>
+  
 
 </head>
 
@@ -25,24 +25,19 @@
     
      
 
-       {% block footer %}
+       
             <div class='text-right m-4'>
                <p class="pr-4 text-muted"> &copy; Copyright 2019 :  <a href="#">contactez nous :)</a>.</p>
                 <p class="pr-4 text-muted">Made with <i class="fas fa-heart text-primary"></i> by Douksieh, Edouard et Olivia
                 </div>
-            {% endblock %}
+           
 
-            {% block javascripts %} {% endblock %}
+           
        
 
 
-    {% block footer %}
-    <div class='text-right m-4'>
-        <p class="pr-4 text-muted"> &copy; Copyright 2019 : <a href="#">contactez nous :)</a>.</p>
-        <p class="pr-4 text-muted">Made with <i class="fas fa-heart text-primary"></i> by Douksieh, Edouard et Olivia
-    </div>
-    {% endblock %}
-
+   
+ {% block javascripts %} {% endblock %}
 
 </body>
 
